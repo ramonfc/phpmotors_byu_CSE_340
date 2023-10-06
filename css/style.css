@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap');
+
+:root {
+  --blue-dark: #4c96d7;
+  --gray-dark: #3a3a3a;
+  --blue-light: #a6cbeb;
+  --custom-black: #101010;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+body {
+  font-family: 'Share Tech Mono', sans-serif;
+  margin: 0;
+}
+
+#wrapper {
+  width: 100%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 1em;
+}
+
+main {
+  padding-left: .25rem;
+}
+
+/* header */
+#motors-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#my-account {
+  margin-right: 3em;
+  text-decoration: none;
+  color: var(--gray-dark);
+}
+
+
+/* nav menu */
+#page_nav ul {
+  height: 2em;
+  padding: 0 1em;
+  background-color: var(--gray-dark);
+  display: flex;
+  gap: 0.5em;
+}
+
+#page_nav ul li {
+  list-style: none;
+  line-height: 2em;
+  margin: 0 0.2em;
+  font-size: 1em;
+}
+
+#page_nav ul li:hover {
+  background-color: var(--blue-dark);
+  color: var(--custom-black);
+  height: 2.1em;
+}
+
+#page_nav ul li a {
+  text-decoration: none;
+  color: #FFFFFF
+}
+
+#page_nav ul li:hover a {
+  color: var(--custom-black);
+}
+
+#page_nav ul li.selected {
+  background-color: var(--blue-dark);
+}
+
+#page_nav ul li.selected a {
+  color: var(--custom-black);
+}
+
+
+/* main content home */
+#article_dmc_delorean div {
+  color: var(--gray-dark);
+  position: relative;
+  font-size: 0.8em;
+}
+
+#main_home h1 {
+  font-size: 1.3em;
+}
+
+#article_dmc_delorean img {
+  width: 100%;
+  margin-top: -5em;
+  margin-bottom: 1em;
+}
+
+#btn_own {
+  display: block;
+  width: 50%;
+  height: 2.5rem;
+  margin: 0 auto;
+  background-color: var(--blue-light);
+  font-size: 1.2rem;
+}
+
+#btn_own {
+  color: var(--gray-dark);
+}
+
+#figures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+  align-items: center;
+  justify-content: center;
+}
+
+#figures figure {
+  height: 5rem;
+  background-color: var(--blue-dark);
+  text-align: center;
+  width:10em;
+}
+
+#figures figure img {
+  height: 90%;
+}
+
+#figures figure figcaption {
+  background-color: #FFFFFF;
+}
+
+#figures figcaption {
+  font-size: 0.8em;
+}
+
+/* footer */
+footer {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+footer p {
+  margin: 0;
+}
+
+
+/* login / register */
+#main_login, #main_register {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--blue-dark);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--custom-black);
+}
+
+#main_login h1, #main_register h1 {
+  text-align: center;
+}
+
+#main_login #not_member { 
+  margin-top: 1em;
+  font-weight: bolder;
+}
+
+#main_login #not_member a { 
+  color: var(--custom-black);
+}
+
+#main_login a:visited { 
+  color: var(--custom-black);
+}
+
+#form_login label, #form_register label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#form_login input[type="email"],
+#form_login input[type="password"],
+#form_register input[type="email"],
+#form_register input[type="password"],
+#form_register input[type="text"]  {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#form_login input[type="submit"],
+#form_register input[type="submit"] {
+  background-color: #007bff;
+  color: #090909;
+  font-weight: bolder;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#form_login input[type="submit"]:hover,
+#form_register input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+
+@media only screen and (min-width: 550px) {
+  body {
+    background-image: url("/phpmotors/images/site/small_check.jpg");
+    background-size: cover;
+  }
+
+  #wrapper {
+    border: 5px solid var(--blue-dark);
+    border-radius: 10px;
+    margin-top: 1em;
+    width: 70%;
+  }
+
+  main#main_home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #article_dmc_delorean {
+    position: relative;
+    grid-column: 1/3;
+  }
+
+  #article_dmc_delorean div {
+    margin-left: 2em;
+  }
+
+  #btn_own {
+    position: absolute;
+    width: 20%;
+    height: 2.5em;
+    top: 142px;
+    left: 25px;
+    font-size: 1em;
+  }
+
+  #article_delorean_reviews {
+    grid-column: 2/3;
+    grid-row: 3;
+    padding: 0 0.5em;
+  }
+
+  #section_delorean_upgrades {
+    grid-column: 1/2;
+    grid-row: 3;
+  }
+}
