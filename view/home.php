@@ -21,9 +21,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/index.php';
             <?php include $_SERVER['DOCUMENT_ROOT'] . "/phpmotors/common/header.php" ?>
         </header>
 
-        <nav aria-label="Menu">
-           <?php // include $_SERVER['DOCUMENT_ROOT'] . "/phpmotors/common/nav.php" ?> 
-            <?php echo $navList; ?>
+        <nav aria-label="Menu">        
+            <?php 
+            // include $_SERVER['DOCUMENT_ROOT'] . "/phpmotors/common/nav.php" 
+            echo $navList; 
+            ?>
         </nav>
 
         <main id="main_home">

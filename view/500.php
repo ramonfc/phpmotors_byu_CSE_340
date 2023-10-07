@@ -1,8 +1,3 @@
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,8 +18,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
     </header>
 
     <nav>
-      <!-- <?php include $_SERVER['DOCUMENT_ROOT'] . "/phpmotors/common/nav.php" ?> -->
-      <?php echo $navList; ?>
+        <?php 
+        include $_SERVER['DOCUMENT_ROOT'] . "/phpmotors/common/nav.php"; 
+        ?>
     </nav>
 
     <main>
