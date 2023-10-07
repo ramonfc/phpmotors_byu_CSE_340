@@ -33,6 +33,8 @@ if ($action == NULL) {
   $action = filter_input(INPUT_GET, 'action');
 }
 
+$clientFirstname = filter_input(INPUT_POST, 'firstName');
+echo $clientFirstname;
 
 switch ($action) {
   case 'deliverLoginView':
@@ -44,7 +46,7 @@ switch ($action) {
   case 'deliverRegistrationView':
     include '../view/register.php';
     break;
+    
   default:
-    // include 'view/home.php';
     break;
 }

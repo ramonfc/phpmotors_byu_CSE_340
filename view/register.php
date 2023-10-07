@@ -40,6 +40,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
                 <label for="passwordRegister">Password:</label>
                 <input type="password" id="passwordRegister" name="passwordRegister" required>
 
+                <button type="button" class="showPasswordButton">
+                     <span class="iconLock">&#x1F513;</span>
+                </button>
+
                 <input type="submit" value="Register">
             </form>
 
