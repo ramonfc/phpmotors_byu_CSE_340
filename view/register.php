@@ -27,24 +27,34 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
 
         <main id="main_register">
             <h1>Register</h1>
-            <form action="#" method="post" id="form_register">
+
+            <?php
+            if (isset($message)) {
+                echo $message;
+            }
+            ?>
+
+            <form action="/phpmotors/accounts/index.php" method="post" id="form_register">
                 <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required>
+                <input type="text" id="firstName" name="clientFirstname" >
 
                 <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required>
+                <input type="text" id="lastName" name="clientLastname" >
 
                 <label for="emailRegister">Email Address:</label>
-                <input type="email" id="emailRegister" name="emailRegister" required>
+                <input type="email" id="emailRegister" name="clientEmail" >
 
                 <label for="passwordRegister">Password:</label>
-                <input type="password" id="passwordRegister" name="passwordRegister" required>
+                <input type="password" id="passwordRegister" name="clientPassword" >
 
                 <button type="button" class="showPasswordButton">
-                     <span class="iconLock">&#x1F513;</span>
+                    <span class="iconLock">&#x1F513;</span>
                 </button>
 
-                <input type="submit" value="Register">
+                <input type="submit" name="submit" value="Register">
+
+                <!-- Add the action name - value pair -->
+                <input type="hidden" name="action" value="register">
             </form>
 
         </main>

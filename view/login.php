@@ -27,6 +27,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
 
         <main id="main_login">
             <h1>Login Form</h1>
+
+            <?php
+            if (isset($message)) {
+                echo $message;
+            }
+            ?>
+
             <form action="#" method="post" id="form_login">
                 <label for="email">Email Address:</label>
                 <input type="email" id="email" name="email" required>
