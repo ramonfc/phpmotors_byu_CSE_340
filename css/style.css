@@ -3,6 +3,8 @@
 :root {
   --blue-dark: #4c96d7;
   --gray-dark: #3a3a3a;
+  --gray-medium: #8d8d8d;
+  --gray-light: #bababa;
   --blue-light: #a6cbeb;
   --custom-black: #101010;
 }
@@ -156,6 +158,14 @@ footer p {
   margin: 0;
 }
 
+/* Message */
+.message {
+  border: 1px dashed white;
+  border-radius: 5px;
+  padding: 0.5em;
+  font-weight: bold;
+}
+
 
 /* login / register */
 #main_login,
@@ -209,13 +219,20 @@ footer p {
 
 #form_login input[type="submit"],
 #form_register input[type="submit"] {
-  background-color: #007bff;
-  color: #090909;
+  background-color: var(--gray-dark);
+  color: #FFFFFF;
+  /* -webkit-text-stroke: 0.5px var(--custom-black); */
   font-weight: bolder;
+  font-size: 1em;
   padding: 10px 20px;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 4px;
   cursor: pointer;
+
+  width: 80%;
+  height: 3em;
+  display: block;
+  margin: 0 auto;
 }
 
 #form_login,
@@ -247,10 +264,140 @@ footer p {
 
 #form_login input[type="submit"]:hover,
 #form_register input[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: var(--gray-medium);
+  color: var(--custom-black);
+  border: 1px solid var(--gray-dark);
 }
 
 
+
+/* Vehicle management */
+#main_vehicle_management h1 {
+  text-align: center;
+}
+
+#main_vehicle_management div {
+  margin: 6em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+}
+
+#main_vehicle_management div a {
+  border: 1px solid var(--custom-black);
+  border-radius: 5px;
+  width: 14em;
+  padding: 2em;
+  text-align: center;
+  font-weight: bold;
+  background-color: var(--gray-dark);
+  color: white;
+  text-decoration: none;
+}
+
+#main_vehicle_management div a:hover {
+  background-color: var(--gray-medium);
+  color: var(--custom-black);
+}
+
+
+
+/* Add car classification */
+#main_add_classification {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--blue-dark);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--custom-black);
+}
+
+#main_add_classification h1 {
+  text-align: center;
+}
+
+#form_add_classification label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+
+
+#form_add_classification input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+#form_add_vehicle input[type="submit"],
+#form_add_classification input[type="submit"] {
+  background-color: var(--gray-dark);
+  color: #FFFFFF;
+  /* -webkit-text-stroke: 0.5px var(--custom-black); */
+  font-weight: bolder;
+  font-size: 1em;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+
+  width: 80%;
+  height: 3em;
+  display: block;
+  margin: 0 auto;
+}
+
+#form_add_vehicle input[type="submit"]:hover,
+#form_add_classification input[type="submit"]:hover {
+  background-color: var(--gray-medium);
+  color: var(--custom-black);
+  border: 1px solid var(--gray-dark);
+}
+
+
+
+/* Add Vehicle */
+#main_add_vehicle {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--blue-dark);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--custom-black);
+}
+
+#main_add_vehicle h1 {
+  text-align: center;
+}
+
+
+#form_add_vehicle label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#form_add_vehicle select,
+#form_add_vehicle textarea,
+#form_add_vehicle input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+#form_add_vehicle textarea {
+  height: 10em;
+}
 
 @media only screen and (min-width: 550px) {
   body {
@@ -297,5 +444,104 @@ footer p {
   #section_delorean_upgrades {
     grid-column: 1/2;
     grid-row: 3;
+  }
+
+  /* Add Vehicle */
+
+  #main_add_vehicle {
+    max-width: 60%;
+  }
+
+  #form_add_vehicle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+  }
+
+  #form_add_vehicle label[for="carClassificationSelect"] {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+  #form_add_vehicle #carClassificationSelect {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+
+
+  #form_add_vehicle label[for="invMake"] {
+    grid-column: 1 / 2;
+    grid-row: 3;
+  }
+  #form_add_vehicle #invMake {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  #form_add_vehicle label[for="invModel"] {
+    grid-column: 2 / 3;
+    grid-row: 3;
+  }
+  #form_add_vehicle #invModel {
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+  #form_add_vehicle label[for="invDescription"] {
+    grid-column: 1 / 3;
+    grid-row: 5;
+  }
+  #form_add_vehicle #invDescription {
+    grid-column: 1 / 3;
+    grid-row:6;
+  }
+
+  #form_add_vehicle label[for="invImage"] {
+    grid-column: 1 / 3;
+    grid-row: 7;
+  }
+  #form_add_vehicle #invImage {
+    grid-column: 1 / 3;
+    grid-row:8;
+  }
+
+  #form_add_vehicle label[for="invThumbnail"] {
+    grid-column: 1 / 3;
+    grid-row: 9;
+  }
+  #form_add_vehicle #invThumbnail {
+    grid-column: 1 / 3;
+    grid-row: 10;
+  }
+
+  #form_add_vehicle label[for="invPrice"] {
+    grid-column: 1 / 2;
+    grid-row: 11;
+  }
+  #form_add_vehicle #invPrice {
+    grid-column: 1 / 2;
+    grid-row: 12;
+  }
+
+  #form_add_vehicle label[for="invStock"] {
+    grid-column: 1 / 2;
+    grid-row: 13;
+  }
+  #form_add_vehicle #invStock {
+    grid-column: 1 / 2;
+    grid-row: 14;
+  }
+
+  #form_add_vehicle label[for="invColor"] {
+    grid-column: 2 / 3;
+    grid-row: 13;
+  }
+  #form_add_vehicle #invColor {
+    grid-column: 2 / 3;
+    grid-row: 14;
+  }
+
+  #form_add_vehicle input[type="submit"] {
+    grid-column: 1 / 3;
+    grid-row: 15;
   }
 }
