@@ -36,3 +36,8 @@ showPasswordButton.addEventListener("click", () => {
         
     }
 });
+
+
+// document.querySelector('#form_register input').addEventListener('focus', function() {
+//     this.setAttribute('required', 'required');
+//   });
