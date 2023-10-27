@@ -36,16 +36,28 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
 
             <form action="/phpmotors/accounts/index.php" method="post" id="form_register">
                 <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="clientFirstname" >
+                <input type="text" id="firstName" name="clientFirstname" required>
 
                 <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="clientLastname" >
+                <input type="text" id="lastName" name="clientLastname" required>
 
                 <label for="emailRegister">Email Address:</label>
-                <input type="email" id="emailRegister" name="clientEmail" >
+                <input type="email" id="emailRegister" name="clientEmail" required placeholder="Enter a valid email address">
 
-                <label for="passwordRegister">Password:</label>
-                <input type="password" id="passwordRegister" name="clientPassword" >
+                <label for="passwordRegister">Password:
+                    <span class="info" 
+                    title="Password must meet the following criteria:
+                    - At least 8 characters
+                    - At least one number
+                    - At least one uppercase letter
+                    - At least one lowercase letter
+                    - At least one special character"
+        >i</span>
+                </label>
+                <input type="password" id="passwordRegister" name="clientPassword" 
+                pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" 
+                title="Password must meet the criteria." 
+                required>
 
                 <button type="button" class="showPasswordButton">
                     <span class="iconLock">&#x1F513;</span>
