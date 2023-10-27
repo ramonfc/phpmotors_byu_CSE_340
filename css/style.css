@@ -259,17 +259,17 @@ footer p {
 }
 
 #form_login .showPasswordButton {
-  top: 8.8em;
+  top: 8.6em;
   right: 0.5em;
 }
 
 #form_register .showPasswordButton {
-  top: 21.3em;
+  top: 21em;
   right: 0.5em;
 }
 
 .iconLock {
-  font-size: 1.4em;
+  font-size: 1.6em;
 }
 
 #form_login input[type="submit"]:hover,
