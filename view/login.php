@@ -34,9 +34,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
             }
             ?>
 
-            <form action="#" method="post" id="form_login">
+            <form action="/phpmotors/accounts/index.php" method="post" id="form_login">
                 <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="clientEmail" 
+                <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?> 
+                required>
 
                 <label for="password">Password:
                     <span class="info" 
@@ -44,12 +46,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
                     - At least 8 characters
                     - At least one number
                     - At least one uppercase letter
-                    - At least one lowercase letter
                     - At least one special character"
-        >i</span>
+                    >i</span>
                 </label>
-                <input type="password" id="password" name="password" 
-                pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" 
+                <input type="password" id="password" name="clientPassword" 
+                pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z]).*$" 
                 title="Password must meet the criteria." 
                 required>
 
@@ -58,6 +59,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
                 </button>
 
                 <input type="submit" value="Login">
+                
+                <!-- Add the action name - value pair -->
+                <input type="hidden" name="action" value="login">
             </form>
 
             <p id="not_member">

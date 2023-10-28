@@ -37,7 +37,28 @@ showPasswordButton.addEventListener("click", () => {
     }
 });
 
-
-// document.querySelector('#form_register input').addEventListener('focus', function() {
+// const selector = "#form_register input, #form_login input";
+// document.querySelector(selector).addEventListener('focus', function() {
 //     this.setAttribute('required', 'required');
 //   });
+
+
+// const emailInput = document.querySelectorAll("input[type=email], input[type=text], input[type=password]");
+// const spanWrong = document.querySelector(".wrong");
+// console.log(emailInput)
+
+
+//     emailInput.forEach(item=> {
+        
+//         item.addEventListener("input", function() {
+        
+//         if (item.checkValidity()) {
+//             spanWrong.classList.remove("wrong");
+//             spanWrong.classList.add("valid");
+//           } else {
+//             spanWrong.classList.remove("valid");
+//             spanWrong.classList.add("wrong");
+//           }
+//     });
+ 
+// });

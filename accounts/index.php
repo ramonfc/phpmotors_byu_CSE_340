@@ -11,6 +11,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/model/main-model.php';
 // Get the accounts model for use as needed
 // require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/model/accounts  -model.php';
 require_once '../model/accounts-model.php';
+// Get the functions library
+require_once '../library/functions.php';
 
 
 // Get the array of classifications
@@ -54,13 +56,16 @@ switch ($action) {
   case 'register':
     // echo 'You are in the register case statement.';
     // Filter and store the data
-    $clientFirstname = filter_input(INPUT_POST, 'clientFirstname');
-    $clientLastname = filter_input(INPUT_POST, 'clientLastname');
-    $clientEmail = filter_input(INPUT_POST, 'clientEmail');
-    $clientPassword = filter_input(INPUT_POST, 'clientPassword');
+    $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+    $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
+    $clientEmail = checkEmail($clientEmail);
+    $checkPassword = checkPassword($clientPassword);
 
     // Check for missing data
-    if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($clientPassword)) {
+    if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)) {
       $message = '<p class="message">Please provide information for all empty form fields.</p>';
       include '../view/register.php';
       exit;
@@ -80,6 +85,23 @@ switch ($action) {
       exit;
     }
 
+    break;
+
+  case 'login':
+    $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+    $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
+    $clientEmail = checkEmail($clientEmail);
+    $checkPassword = checkPassword($clientPassword);
+
+    // Check for missing data
+    if (empty($clientEmail) || empty($checkPassword)) {
+      $message = '<p class="message">Please provide information for all empty form fields.</p>';
+      include '../view/login.php';
+      exit;
+    }
+    $message = '<p class="message">Welcome</p>';
+    include '../view/login.php';
     break;
 
   default:

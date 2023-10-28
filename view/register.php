@@ -35,14 +35,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
             ?>
 
             <form action="/phpmotors/accounts/index.php" method="post" id="form_register">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="clientFirstname" required>
+                <label for="firstName">First Name: </label>
+                <input type="text" id="firstName" name="clientFirstname"
+                <?php if(isset($clientFirstname)){echo "value='$clientFirstname'";} ?> 
+                required>
 
                 <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="clientLastname" required>
+                <input type="text" id="lastName" name="clientLastname" 
+                <?php if(isset($clientLastname)){echo "value='$clientLastname'";}  ?> 
+                required>
 
                 <label for="emailRegister">Email Address:</label>
-                <input type="email" id="emailRegister" name="clientEmail" required placeholder="Enter a valid email address">
+                <input type="email" id="emailRegister" name="clientEmail" 
+                <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?> 
+                required placeholder="Enter a valid email address">
 
                 <label for="passwordRegister">Password:
                     <span class="info" 
@@ -50,12 +56,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
                     - At least 8 characters
                     - At least one number
                     - At least one uppercase letter
-                    - At least one lowercase letter
                     - At least one special character"
-        >i</span>
+                    >i</span>
                 </label>
                 <input type="password" id="passwordRegister" name="clientPassword" 
-                pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" 
+                pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z]).*$" 
                 title="Password must meet the criteria." 
                 required>
 
