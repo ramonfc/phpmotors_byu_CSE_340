@@ -10,6 +10,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/library/connections.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/model/main-model.php';
 // Get the vehicles model for use as needed
 require_once '../model/vehicles-model.php';
+// Get the functions library
+require_once '../library/functions.php';
 
 
 // Get the array of classifications
@@ -19,25 +21,26 @@ $classifications = getClassifications();
 // 	exit;
 
 // Build a navigation bar using the $classifications array
-$navList = '<nav id="page_nav">';
-$navList .= '<ul>';
-$navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
-foreach ($classifications as $classification) {
-  $navList .= "<li><a href='/phpmotors/index.php?action=" . urlencode($classification['classificationName']) . "' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
-}
-$navList .= '</ul>';
-$navList .= '</nav>';
+// $navList = '<nav id="page_nav">';
+// $navList .= '<ul>';
+// $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
+// foreach ($classifications as $classification) {
+//   $navList .= "<li><a href='/phpmotors/index.php?action=" . urlencode($classification['classificationName']) . "' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
+// }
+// $navList .= '</ul>';
+// $navList .= '</nav>';
+$navList = buildNavigationBar($classifications);
 
 // echo $navList;
 // exit;
 
-
-$classificationList = '<select id="carClassificationSelect" name="carClassificationSelect">';
-$classificationList .= "<option value=''>Choose Car Classification</option>";
-foreach ($classifications as $classification) {
-  $classificationList .= "<option value=" . $classification['classificationId'] . ">" . $classification['classificationName'] . "</option>";
-}
-$classificationList .= '</select>';
+// // Select list:
+// $classificationList = '<select id="carClassificationSelect" name="carClassificationSelect">';
+// $classificationList .= "<option value=''>Choose Car Classification</option>";
+// foreach ($classifications as $classification) {
+//   $classificationList .= "<option value=" . $classification['classificationId'] . ">" . $classification['classificationName'] . "</option>";
+// }
+// $classificationList .= '</select>';
 
 // echo $classificationList;
 // exit;
@@ -105,9 +108,11 @@ switch ($action) {
   case 'add-class-form':
     // echo 'You are in the register case statement.';
     // Filter and store the data
-    $classificationName = filter_input(INPUT_POST, 'classificationName');
+    $classificationName = trim(filter_input(INPUT_POST, 'classificationName', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
+    $checkClassificationNameLength= limitTo30Chars($classificationName);
     // Check for missing data
-    if (empty($classificationName)) {
+    if (empty($classificationName) || empty($checkClassificationNameLength)) {
       $message = '<p class="message">Please provide information for all empty form fields.</p>';
       include '../view/add-classification.php';
       exit;
@@ -133,15 +138,15 @@ switch ($action) {
     // Filter and store the data
     //$classificationName = filter_input(INPUT_POST, 'classificationName');
 
-    $classificationId= filter_input(INPUT_POST, 'carClassificationSelect');
-    $invMake= filter_input(INPUT_POST, 'invMake');
-    $invModel= filter_input(INPUT_POST, 'invModel');
-    $invDescription= filter_input(INPUT_POST, 'invDescription');
-    $invImage= filter_input(INPUT_POST, 'invImage');
-    $invThumbnail= filter_input(INPUT_POST, 'invPrice');
-    $invPrice= filter_input(INPUT_POST, 'invPrice');
-    $invStock= filter_input(INPUT_POST, 'invStock');
-    $invColor= filter_input(INPUT_POST, 'invColor');
+    $classificationId= trim(filter_input(INPUT_POST, 'carClassificationSelect'));
+    $invMake= trim(filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $invModel= trim(filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $invDescription= trim(filter_input(INPUT_POST, 'invDescription', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $invImage= trim(filter_input(INPUT_POST, 'invImage', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $invThumbnail= trim(filter_input(INPUT_POST, 'invPrice', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $invPrice= trim(filter_input(INPUT_POST, 'invPrice', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION));
+    $invStock= trim(filter_input(INPUT_POST, 'invStock', FILTER_SANITIZE_NUMBER_INT));
+    $invColor= trim(filter_input(INPUT_POST, 'invColor', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     // Check for missing data
     if (empty($classificationId )|| empty($invMake) || empty($invModel) || empty($invDescription)
     || empty($invImage) || empty($invThumbnail) || empty($invPrice) || empty($invStock)

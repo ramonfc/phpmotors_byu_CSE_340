@@ -35,8 +35,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/vehicles/index.php';
             ?>
 
             <form action="/phpmotors/vehicles/index.php" method="post" id="form_add_classification">
-                <label for="classificationName">Classification Name</label>
-                <input type="text" id="classificationName" name="classificationName">               
+                <label for="classificationName">Classification Name 
+                    <span class="info" title="No more than 30 characters">i</span>
+                </label>
+                <input type="text" id="classificationName" name="classificationName" maxlength="30" required>               
                 <input type="submit" value="Add Classification">
 
                  <!-- Add the action name - value pair -->

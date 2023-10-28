@@ -22,25 +22,31 @@ items.forEach(item => {
 const passwordInput = document.querySelector("input[type=password");
 const showPasswordButton = document.querySelector(".showPasswordButton");
 const iconLock = document.querySelector(".iconLock");
-iconLock.title= "Show password";
+if (iconLock) {
+    iconLock.title = "Show password";
 
-showPasswordButton.addEventListener("click", () => {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        iconLock.title= "Hide password";
-        iconLock.innerHTML= "&#x1F512;";
-    } else {
-        passwordInput.type = "password";
-        iconLock.innerHTML= "&#x1F513;";
-        iconLock.title= "Show password";
-        
-    }
-});
+    showPasswordButton.addEventListener("click", () => {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            iconLock.title = "Hide password";
+            iconLock.innerHTML = "&#x1F512;";
+        } else {
+            passwordInput.type = "password";
+            iconLock.innerHTML = "&#x1F513;";
+            iconLock.title = "Show password";
 
-// const selector = "#form_register input, #form_login input";
-// document.querySelector(selector).addEventListener('focus', function() {
-//     this.setAttribute('required', 'required');
-//   });
+        }
+    });
+}
+
+// const selector = "form input";
+// const inputsToValidate = document.querySelectorAll(selector);
+// inputsToValidate.forEach(input => {
+//     input.addEventListener('focus', function() {
+//         this.setAttribute('required', 'required');
+//       });
+// });
+
 
 
 // const emailInput = document.querySelectorAll("input[type=email], input[type=text], input[type=password]");
