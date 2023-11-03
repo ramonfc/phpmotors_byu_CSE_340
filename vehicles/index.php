@@ -4,6 +4,9 @@
  * Vehicles Controller
  */
 
+// Create or access a Session
+session_start();
+
 // Get the database connection file
 require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/library/connections.php';
 // Get the PHP Motors model for use as needed

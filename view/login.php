@@ -29,9 +29,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/accounts/index.php';
             <h1>Login Form</h1>
 
             <?php
-            if (isset($message)) {
-                echo $message;
-            }
+            // if (isset($message)) {
+            //     echo $message;
+            // }
+            if (isset($_SESSION['message'])) {
+                echo $_SESSION['message'];
+               }
             ?>
 
             <form action="/phpmotors/accounts/index.php" method="post" id="form_login">
