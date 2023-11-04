@@ -1,4 +1,9 @@
 <?php
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['clientData']['clientLevel'] == 1) {
+    header('Location: /phpmotors/');
+}
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/vehicles/index.php';
 ?>
 

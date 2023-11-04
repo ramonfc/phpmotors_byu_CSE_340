@@ -44,8 +44,11 @@ main {
   align-items: center;
 }
 
-#my-account {
-  margin-right: 3em;
+.header_link_right_space {
+  padding-right: 2em;
+}
+
+.header_link {
   text-decoration: none;
   color: var(--gray-dark);
 }
@@ -423,6 +426,27 @@ textarea:required:invalid, textarea:focus:invalid {
 }
 .valid {
   color: green;
+}
+
+
+/* admin */
+#view_vechicles_link {
+  margin: 0 auto;
+  display: block;
+  border: 1px solid var(--custom-black);
+  border-radius: 5px;
+  width: 14em;
+  padding: 0.3em 0.5em;
+  text-align: center;
+  font-weight: bold;
+  background-color: var(--gray-dark);
+  color: white;
+  text-decoration: none;
+}
+
+#view_vechicles_link:hover {
+  background-color: var(--gray-medium);
+  color: var(--custom-black);
 }
 
 @media only screen and (min-width: 550px) {

@@ -156,10 +156,25 @@ switch ($action) {
     array_pop($clientData);
     // Store the array into the session
     $_SESSION['clientData'] = $clientData;
-    // Send them to the admin view
-    include '../view/admin.php';
+    // Send them to the admin view:
+    // include '../view/admin.php';
+    header('Location: /phpmotors/accounts'); //using this header because clicking go back on browser 
+    exit;                                   //from vehicle-management to admin, appears a Confirm Form Resubmission
+
+  // case "vehiclesView":
+  //   // include '../vehicles/index.php';
+  //   header('Location: /phpmotors/vehicles');
+  //   exit;
+ 
+
+  case "Logout":
+    unset($_SESSION['clientData']);
+    session_destroy();
+    header('Location: /phpmotors/');
     exit;
 
   default:
+    include '../view/admin.php';
+    exit;
     break;
 }
