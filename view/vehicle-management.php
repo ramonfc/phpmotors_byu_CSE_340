@@ -2,11 +2,13 @@
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['clientData']['clientLevel'] == 1) {
     header('Location: /phpmotors/');
+    exit;
 }
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/vehicles/index.php';
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -32,26 +34,40 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/vehicles/index.php';
         <main id="main_vehicle_management">
             <h1>Vehicle Management</h1>
 
-            <?php
-            if (isset($message)) {
-                echo $message;
-            }
-            ?>
 
-            <div>
+            <div id="main_manage_btns">
 
-                <a href="/phpmotors/vehicles/?action=deliverAddClassification" title="add car classification">
+                <a href="/phpmotors/vehicles/?action=deliverAddClassification" title="add car classification" class="btn_link">
                     Add Classification
                 </a>
 
 
-                <a href="/phpmotors/vehicles/?action=deliverAddVehicle" title="add vehicle">
+                <a href="/phpmotors/vehicles/?action=deliverAddVehicle" title="add vehicle" class="btn_link">
                     Add Vehicle
                 </a>
 
 
             </div>
 
+            <div id="modify_delete_car">
+                <?php
+                if (isset($message)) {
+                    echo $message;
+                }
+
+                if (isset($classificationList)) {
+                    echo '<h2>Vehicles By Classification</h2>';
+                    echo '<label for="classificationList">Choose a classification to see those vehicles</label>';
+                    echo $classificationList;
+                }
+                ?>
+
+                <noscript>
+                    <p><strong>JavaScript Must Be Enabled to Use this Page.</strong></p>
+                </noscript>
+
+                <table id="inventoryDisplay"></table>
+            </div>
         </main>
 
         <hr>
@@ -61,6 +77,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/vehicles/index.php';
         </footer>
 
     </div>
+    <script src="../js/inventory.js"></script>
 </body>
 
 </html>
