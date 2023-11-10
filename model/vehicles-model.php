@@ -162,3 +162,29 @@ function updateVehicle(
     // Return the indication of success (rows changed)
     return $rowsChanged;
 }
+
+
+/**
+ * Delete a vehicle in the inventory table
+ */
+function deleteVehicle($invId) {
+    // Create a connection object from the phpmotors connection function
+    $db = phpmotorsConnect();
+    // The SQL statement to be used with the database 
+    $sql = 'DELETE FROM inventory WHERE invId = :invId';
+    // The next line creates the prepared statement using the phpmotors connection      
+    // Create the prepared statement using the phpmotors connection
+    $stmt = $db->prepare($sql);
+    // The next four lines replace the placeholders in the SQL
+    // statement with the actual values in the variables
+    // and tells the database the type of data it is   
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
+    // Update the data
+    $stmt->execute();
+    // Ask how many rows changed as a result of our update
+    $rowsChanged = $stmt->rowCount();
+    // Close the database interaction
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+}

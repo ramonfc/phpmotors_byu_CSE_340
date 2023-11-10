@@ -379,7 +379,7 @@ footer p {
 
 
 /* Add Vehicle */
-#main_add_vehicle, #main_update_vehicle {
+#main_add_vehicle, #main_update_vehicle, #main_delete_vehicle {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -389,7 +389,7 @@ footer p {
   color: var(--custom-black);
 }
 
-#main_add_vehicle h1, #main_update_vehicle h1{
+#main_add_vehicle h1, #main_update_vehicle h1, #main_delete_vehicle h1{
   text-align: center;
 }
 
@@ -431,6 +431,10 @@ textarea:required:invalid, textarea:focus:invalid {
   color: green;
 }
 
+.field_del {
+  color: #444444;
+  background-color: #dddddd;
+}
 
 /* admin */
 #view_vechicles_link {
@@ -458,6 +462,7 @@ textarea:required:invalid, textarea:focus:invalid {
   justify-content: center;
   align-items: center;
   margin-bottom: 1em;
+  margin-top: -1em;
 }
 
 .mini_btn {
@@ -580,7 +585,7 @@ textarea:required:invalid, textarea:focus:invalid {
 
   /* Add Vehicle */
 
-  #main_add_vehicle, #main_update_vehicle {
+  #main_add_vehicle, #main_update_vehicle, #main_delete_vehicle {
     max-width: 60%;
   }
 

@@ -235,11 +235,43 @@ switch ($action) {
       header('location: /phpmotors/vehicles/');
       exit;
      } else {
-      $message = "<p class='message'>Error. The new vehicle was not updated.</p>";
+      $message = "<p class='message'>Error. The $invMake $invModel vehicle was not updated.</p>";
       include '../view/vehicle-update.php';
       exit;
     }
 
+    break;
+
+
+  case 'del':
+    $invId = filter_input(INPUT_GET, 'invId', FILTER_VALIDATE_INT);
+    $invInfo = getInvItemInfo($invId);
+    // print_r($invInfo);
+    if (count($invInfo) < 1) {
+      $message = 'Sorry, no vehicle information could be found.';
+    }
+    include '../view/vehicle-delete.php';
+    exit;
+    break;
+
+
+  case 'deleteVehicle':
+    $invMake= trim(filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $invModel= trim(filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
+
+    $deleteResult = deleteVehicle($invId);
+    if ($deleteResult) {
+      $message = "<p class='message'>Congratulations, the $invMake $invModel was successfully deleted.</p>";
+      $_SESSION['message'] = $message;
+      header('location: /phpmotors/vehicles/');
+      exit;
+     } else {
+      $message = "<p class='message'>Error. $invMake $invModel was not deleted.</p>";
+      $_SESSION['message'] = $message;
+      header('location: /phpmotors/vehicles/');
+      exit;
+    }
     break;
 
   default:
