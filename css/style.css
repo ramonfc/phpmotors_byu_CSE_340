@@ -351,7 +351,7 @@ footer p {
 }
 
 
-#form_add_vehicle input[type="submit"],
+.form_data_car input[type="submit"],
 #form_add_classification input[type="submit"] {
   background-color: var(--gray-dark);
   color: #FFFFFF;
@@ -369,7 +369,7 @@ footer p {
   margin: 0 auto;
 }
 
-#form_add_vehicle input[type="submit"]:hover,
+.form_data_car input[type="submit"]:hover,
 #form_add_classification input[type="submit"]:hover {
   background-color: var(--gray-medium);
   color: var(--custom-black);
@@ -379,7 +379,7 @@ footer p {
 
 
 /* Add Vehicle */
-#main_add_vehicle {
+#main_add_vehicle, #main_update_vehicle {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -389,20 +389,20 @@ footer p {
   color: var(--custom-black);
 }
 
-#main_add_vehicle h1 {
+#main_add_vehicle h1, #main_update_vehicle h1{
   text-align: center;
 }
 
 
-#form_add_vehicle label {
+.form_data_car label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
 }
 
-#form_add_vehicle select,
-#form_add_vehicle textarea,
-#form_add_vehicle input[type="text"] {
+.form_data_car select,
+.form_data_car textarea,
+.form_data_car input[type="text"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -411,7 +411,7 @@ footer p {
 }
 
 
-#form_add_vehicle textarea {
+.form_data_car textarea {
   height: 10em;
 }
 
@@ -580,99 +580,99 @@ textarea:required:invalid, textarea:focus:invalid {
 
   /* Add Vehicle */
 
-  #main_add_vehicle {
+  #main_add_vehicle, #main_update_vehicle {
     max-width: 60%;
   }
 
-  #form_add_vehicle {
+  .form_data_car {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.5em;
   }
 
-  #form_add_vehicle label[for="carClassificationSelect"] {
+  .form_data_car label[for="carClassificationSelect"] {
     grid-column: 1 / 2;
     grid-row: 1;
   }
-  #form_add_vehicle #carClassificationSelect {
+  .form_data_car #carClassificationSelect {
     grid-column: 1 / 3;
     grid-row: 2;
   }
 
 
-  #form_add_vehicle label[for="invMake"] {
+  .form_data_car label[for="invMake"] {
     grid-column: 1 / 2;
     grid-row: 3;
   }
-  #form_add_vehicle #invMake {
+  .form_data_car #invMake {
     grid-column: 1;
     grid-row: 4;
   }
 
-  #form_add_vehicle label[for="invModel"] {
+  .form_data_car label[for="invModel"] {
     grid-column: 2 / 3;
     grid-row: 3;
   }
-  #form_add_vehicle #invModel {
+  .form_data_car #invModel {
     grid-column: 2;
     grid-row: 4;
   }
 
-  #form_add_vehicle label[for="invDescription"] {
+  .form_data_car label[for="invDescription"] {
     grid-column: 1 / 3;
     grid-row: 5;
   }
-  #form_add_vehicle #invDescription {
+  .form_data_car #invDescription {
     grid-column: 1 / 3;
     grid-row:6;
   }
 
-  #form_add_vehicle label[for="invImage"] {
+  .form_data_car label[for="invImage"] {
     grid-column: 1 / 3;
     grid-row: 7;
   }
-  #form_add_vehicle #invImage {
+  .form_data_car #invImage {
     grid-column: 1 / 3;
     grid-row:8;
   }
 
-  #form_add_vehicle label[for="invThumbnail"] {
+  .form_data_car label[for="invThumbnail"] {
     grid-column: 1 / 3;
     grid-row: 9;
   }
-  #form_add_vehicle #invThumbnail {
+  .form_data_car #invThumbnail {
     grid-column: 1 / 3;
     grid-row: 10;
   }
 
-  #form_add_vehicle label[for="invPrice"] {
+  .form_data_car label[for="invPrice"] {
     grid-column: 1 / 2;
     grid-row: 11;
   }
-  #form_add_vehicle #invPrice {
+  .form_data_car #invPrice {
     grid-column: 1 / 2;
     grid-row: 12;
   }
 
-  #form_add_vehicle label[for="invStock"] {
+  .form_data_car label[for="invStock"] {
     grid-column: 1 / 2;
     grid-row: 13;
   }
-  #form_add_vehicle #invStock {
+  .form_data_car #invStock {
     grid-column: 1 / 2;
     grid-row: 14;
   }
 
-  #form_add_vehicle label[for="invColor"] {
+  .form_data_car label[for="invColor"] {
     grid-column: 2 / 3;
     grid-row: 13;
   }
-  #form_add_vehicle #invColor {
+  .form_data_car #invColor {
     grid-column: 2 / 3;
     grid-row: 14;
   }
 
-  #form_add_vehicle input[type="submit"] {
+  .form_data_car input[type="submit"] {
     grid-column: 1 / 3;
     grid-row: 15;
   }

@@ -198,6 +198,16 @@ switch ($action) {
     echo json_encode($inventoryArray);
     break;
 
+  case 'mod':
+    $invId = filter_input(INPUT_GET, 'invId', FILTER_VALIDATE_INT);
+    $invInfo = getInvItemInfo($invId);
+    // print_r($invInfo);
+    if (count($invInfo) < 1) {
+      $message = 'Sorry, no vehicle information could be found.';
+    }
+    include '../view/vehicle-update.php';
+    exit;
+    break;
 
   default:
   $classificationList = buildClassificationList($classifications);

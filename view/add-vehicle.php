@@ -54,7 +54,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/vehicles/index.php';
             }
             ?>
 
-            <form action="/phpmotors/vehicles/index.php" method="post" id="form_add_vehicle">
+            <form action="/phpmotors/vehicles/index.php" method="post" id="form_add_vehicle" class="form_data_car">
 
                 <label for="carClassificationSelect">Car Classification</label>
                 <?php
