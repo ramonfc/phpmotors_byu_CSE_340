@@ -5,6 +5,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['clientData']['clientLevel'] == 1
     exit;
 }
 
+
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+   }
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/vehicles/index.php';
 
 ?>
@@ -81,3 +86,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/vehicles/index.php';
 </body>
 
 </html>
+
+<?php unset($_SESSION['message']); ?>
