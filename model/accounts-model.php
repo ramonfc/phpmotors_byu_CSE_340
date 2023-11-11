@@ -69,3 +69,58 @@ function getClient($clientEmail){
     $stmt->closeCursor();
     return $clientData;
    }
+
+
+// Update the personal information based on clientId.
+function updateClient($clientFirstname, $clientLastname, $clientEmail, $clientId){
+    // Create a connection object using the phpmotors connection function
+    $db = phpmotorsConnect();
+    // The SQL statement
+    $sql = 'UPDATE clients SET clientFirstname = :clientFirstname, clientLastname = :clientLastname, clientEmail = :clientEmail WHERE clientId = :clientId';
+    // Create the prepared statement using the phpmotors connection
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientFirstname', $clientFirstname, PDO::PARAM_STR);
+    $stmt->bindValue(':clientLastname', $clientLastname, PDO::PARAM_STR);
+    $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+    // Insert the data
+    $stmt->execute();
+    // Ask how many rows changed as a result of our insert
+    $rowsChanged = $stmt->rowCount();
+    // Close the database interaction
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+}
+
+// Get client data based on an clientId
+function getClientById($clientId){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientId = :clientId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+    $stmt->execute();
+    $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $clientData;
+}
+
+// Update the password based on clientId.
+function updateNewPassword($hashedPassword, $clientId){
+    // Create a connection object using the phpmotors connection function
+    $db = phpmotorsConnect();
+    // The SQL statement
+    $sql = 'UPDATE clients SET clientPassword = :clientPassword WHERE clientId = :clientId';
+    // Create the prepared statement using the phpmotors connection
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientPassword', $hashedPassword, PDO::PARAM_STR);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
+    // Insert the data
+    $stmt->execute();
+    // Ask how many rows changed as a result of our insert
+    $rowsChanged = $stmt->rowCount();
+    // Close the database interaction
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+}

@@ -174,16 +174,18 @@ footer p {
 
 /* Message */
 .message {
-  border: 1px dashed white;
+  border: 1px dashed #272424;
   border-radius: 5px;
   padding: 0.5em;
   font-weight: bold;
+  width: fit-content;
 }
 
 
 /* login / register */
 #main_login,
-#main_register {
+#main_register,
+#main_update {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -194,7 +196,8 @@ footer p {
 }
 
 #main_login h1,
-#main_register h1 {
+#main_register h1,
+#main_update h1 {
   text-align: center;
 }
 
@@ -212,7 +215,9 @@ footer p {
 }
 
 #form_login label,
-#form_register label {
+#form_register label,
+#form_update_info label,
+#form_update_pass label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
@@ -223,7 +228,11 @@ footer p {
 #form_login input[type="text"],
 #form_register input[type="email"],
 #form_register input[type="password"],
-#form_register input[type="text"] {
+#form_register input[type="text"],
+#form_update_info input[type="email"],
+#form_update_info input[type="text"],
+#form_update_pass input[type="text"],
+#form_update_pass input[type="password"]{
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -232,7 +241,9 @@ footer p {
 }
 
 #form_login input[type="submit"],
-#form_register input[type="submit"] {
+#form_register input[type="submit"],
+#form_update_info input[type="submit"],
+#form_update_pass input[type="submit"] {
   background-color: var(--gray-dark);
   color: #FFFFFF;
   /* -webkit-text-stroke: 0.5px var(--custom-black); */
@@ -250,7 +261,9 @@ footer p {
 }
 
 #form_login,
-#form_register {
+#form_register,
+#form_update_info,
+#form_update_pass {
   position: relative;
 }
 
@@ -272,12 +285,20 @@ footer p {
   right: 0.5em;
 }
 
+
+#form_update_pass .showPasswordButton {
+  top: 2.3em;
+  right: 0.5em;
+}
+
 .iconLock {
   font-size: 1.6em;
 }
 
 #form_login input[type="submit"]:hover,
-#form_register input[type="submit"]:hover {
+#form_register input[type="submit"]:hover,
+#form_update_info input[type="submit"]:hover,
+#form_update_pass input[type="submit"]:hover  {
   background-color: var(--gray-medium);
   color: var(--custom-black);
   border: 1px solid var(--gray-dark);
@@ -437,7 +458,12 @@ textarea:required:invalid, textarea:focus:invalid {
 }
 
 /* admin */
-#view_vechicles_link {
+#admin {
+padding: 0 0 1em 1em;
+}
+
+/* #view_vechicles_link  */
+.manage_btn_lk {
   margin: 0 auto;
   display: block;
   border: 1px solid var(--custom-black);
@@ -451,7 +477,8 @@ textarea:required:invalid, textarea:focus:invalid {
   text-decoration: none;
 }
 
-#view_vechicles_link:hover {
+/* #view_vechicles_link:hover  */
+.manage_btn_lk:hover {
   background-color: var(--gray-medium);
   color: var(--custom-black);
 }

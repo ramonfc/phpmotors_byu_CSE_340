@@ -29,12 +29,7 @@ if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
 
         <main id="admin">
             <p>You are logged in.</p>
-            <?php
-            if (isset($_SESSION['message'])) {
-                echo $_SESSION['message'];
-            }
-            unset($_SESSION['message']);
-            ?>
+
             <h1>
                 <?php
 
@@ -43,17 +38,40 @@ if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
                 ?>
             </h1>
 
+            <?php
+            if (isset($_SESSION['message'])) {
+                echo $_SESSION['message'];
+            }
+            unset($_SESSION['message']);
+
+            //messages about changing password:
+            if (isset($messagePass)) {
+                echo $messagePass;
+            } else  if (isset($_SESSION['messagePass'])) {
+                echo $_SESSION['messagePass'];
+            }
+            unset($_SESSION['messagePass']);
+            ?>
+
+         
             <ul>
                 <?php
 
                 echo "<li><b>First Name: </b>" . $_SESSION['clientData']['clientFirstname'] . "</li>";
                 echo "<li><b>Last Name: </b>" . $_SESSION['clientData']['clientLastname'] . "</li>";
                 echo "<li><b>Email: </b>" . $_SESSION['clientData']['clientEmail'] . "</li>";
-                echo "<li><b>Level: </b>" . $_SESSION['clientData']['clientLevel'] . "</li>";
 
                 ?>
 
             </ul>
+
+
+            <h2>Account Management</h2>
+            <p>Use the following link to update account information.</p>
+            <p>
+                <a href='/phpmotors/accounts/?action=update' id='update_account_link' class="manage_btn_lk">
+                    Update Account Information</a>
+            </p>
 
             <?php
 
@@ -62,7 +80,7 @@ if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
                 <h2>Inventory Management</h2>
                 <p>Use the following link to manage the inventory.</p>
                 <p>
-                    <a href='/phpmotors/vehicles/' id='view_vechicles_link'>View Vehicle Management</a>
+                    <a href='/phpmotors/vehicles/' id='view_vechicles_link' class="manage_btn_lk">View Vehicle Management</a>
                 </p>
             <?php
             }

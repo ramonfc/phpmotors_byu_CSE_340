@@ -161,11 +161,100 @@ switch ($action) {
     header('Location: /phpmotors/accounts'); //using this header because clicking go back on browser 
     exit;                                   //from vehicle-management to admin, appears a Confirm Form Resubmission
 
-  // case "vehiclesView":
-  //   // include '../vehicles/index.php';
-  //   header('Location: /phpmotors/vehicles');
-  //   exit;
- 
+  case "update":
+    include '../view/update.php';  
+    exit;  
+    break;
+
+  case "updateInfoClient":
+    // Filter and store the data
+    $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL)); // new email
+    $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+
+    $clientEmail = checkEmail($clientEmail);
+
+
+    if ($clientEmail != $_SESSION['clientData']['clientEmail']) {
+      //check for existing email:
+      $existingEmail = checkExistingEmail($clientEmail);
+
+      //Check for existing email address in the table
+      if ($existingEmail) {
+        $messageUpdate = '<p class="message">That email address already exists, try using a different email.</p>';
+        $_SESSION['message'] = $messageUpdate;
+        include '../view/update.php';
+        exit;
+      }
+    }
+    // Check for missing data
+    if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)) {
+      $messageUpdate = '<p class="message">Please provide information for all empty form fields.</p>';
+      $_SESSION['message'] = $messageUpdate;
+      //  $_SESSION['message'] = "Please provide information for all empty form fields.";
+      include '../view/update.php';
+      exit;
+    }
+
+    // Send the data to the model
+    $updateOutcome = updateClient($clientFirstname, $clientLastname, $clientEmail, $clientId);
+    // Check and report the result
+    if ($updateOutcome === 1) {
+      // $_SESSION['clientData'] = getClientById($clientId);
+      //Query the client data based on the clientId
+      $clientData = getClientById($clientId);
+      // Remove the password from the array
+      // the array_pop function removes the last
+      // element from an array
+      array_pop($clientData);
+      // Store the array into the session
+      $_SESSION['clientData'] = $clientData;
+      
+      $messageUpdate = "<p class='message'>Information update was a success.</p>";
+      $_SESSION['message'] = $messageUpdate;
+      header('location: /phpmotors/accounts/');
+      exit;
+    } else {
+      $messageUpdate = "<p class='message'>Sorry, but information update failed. Please try again.</p>";
+      $_SESSION['message'] = $messageUpdate;
+      header('location: /phpmotors/accounts/');
+      exit;
+    }   
+    break;
+
+
+  case "updatePassword":
+    $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $checkPassword = checkPassword($clientPassword);
+    $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+
+    // Check for missing data
+    if (empty($checkPassword)) {
+      $messagePass = "<p class='message'>Please provide information for all empty form fields.</p>";
+      $_SESSION['messagePass'] = $messagePass;
+      include '../view/update.php';
+      exit;
+    }
+
+    // Hash the checked password
+    $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+
+    // Update the password.
+    $updatePasswordOutcome = updateNewPassword($hashedPassword, $clientId);
+    // Check and report the result
+    if($updatePasswordOutcome === 1){
+      $messagePass = "<p class='message'>Password update was a success.</p>";
+      $_SESSION['messagePass'] = $messagePass;
+      header('location: /phpmotors/accounts/');
+      exit;
+  } else {
+      $messagePass = "<p class='message'>Sorry, password update failed. Please try again.</p>";
+      $_SESSION['messagePass'] = $messagePass;
+    header('location: /phpmotors/accounts/');
+    exit;
+  }
+    break;  
 
   case "Logout":
     unset($_SESSION['clientData']);
