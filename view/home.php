@@ -39,7 +39,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/index.php';
                     <p>Fuzzy dice!</p>
                 </div>
 
-                <img src="/phpmotors/images/delorean.jpg" alt="delorean" id="delorean">
+                <img src="/phpmotors/images/vehicles/delorean.jpg" alt="delorean" id="delorean">
 
                 <button id="btn_own">Own Today</button>
             </article>
