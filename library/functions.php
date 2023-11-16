@@ -74,12 +74,31 @@ function buildVehiclesDisplay($vehicles)
     $dv = '<ul id="inv-display">';
     foreach ($vehicles as $vehicle) {
         $dv .= '<li>';
-        $dv .= "<img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+        $dv .= "<a href='/phpmotors/vehicles/?action=vehicles&invId=".urlencode($vehicle['invId'])."' title='View $vehicle[invModel] car'>";
+        $dv .= "<img src='$vehicle[invThumbnail]' alt='$vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+        $dv .= "</a>";
         $dv .= '<hr>';
+        $dv .= "<a href='/phpmotors/vehicles/?action=vehicles&invId=".urlencode($vehicle['invId'])."' title='View $vehicle[invModel] car'>";
         $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2>";
-        $dv .= "<span>$$vehicle[invPrice]</span>";
+        $dv .= "</a>";
+        $dv .= "<span>$".number_format($vehicle['invPrice'])."</span>";
         $dv .= '</li>';
     }
     $dv .= '</ul>';
     return $dv;
 }
+
+/**
+ * take the specific vehicle's information and wrap it up in HTML to deliver to the view
+ */
+function buildSingleVehicleDisplay($vehicle){
+    $sv = '<section id="single-vehicle">';
+    $sv .= "<img src='$vehicle[invImage]' alt='$vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+    $sv .= "<h2>$vehicle[invMake] $vehicle[invModel] Details</h2>";
+    $sv .= "<p>$vehicle[invDescription]</p>";
+    $sv .= "<p><b>Color:</b> $vehicle[invColor]</p>";
+    $sv .= "<p><b>Quantity in Stock:</b> $vehicle[invStock]</p>";
+    $sv .= "<p><b>Price: $".number_format($vehicle['invPrice'])."</b></p>";
+    $sv .= '</section>';
+    return $sv;
+  }
