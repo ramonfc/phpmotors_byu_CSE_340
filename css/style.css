@@ -63,7 +63,13 @@ main {
   background-color: var(--gray-light);
 }
 
-
+.notification {
+  border: 2px dashed var(--gray-dark);
+  width: fit-content;
+  padding: 1em 0.4em;
+  font-size: 1em;
+  background-color: var(--gray-light);
+}
 
 /* nav menu */
 #page_nav ul {
@@ -606,6 +612,88 @@ margin: 1em;
   margin: 0 auto;
 }
 
+
+/* --------------- image admin ---------------- */
+#main_image_admin h1, #main_image_admin h2{
+  margin: 1rem;
+}
+
+#main_image_admin form span, #main_image_admin form label, #main_image_admin form fieldset {
+  display: block;
+  margin: 1rem;
+  width: fit-content;
+}
+#main_image_admin form select{
+  display: block;
+  margin: 1rem;
+
+  width: fit-content;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#main_image_admin form label input{
+  display: block;
+}
+
+#main_image_admin form fieldset label.pImage{
+  margin: 0.5rem;
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+#main_image_admin>form>input{
+  display: block;
+  margin: 1rem;
+}
+
+#main_image_admin>form>input[type="submit"]{
+  display: block;
+  width: 12em;
+  padding: 0.4em 0;
+  background-color: var(--blue-light);
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+#image-display {
+  width: 90%;
+ display: flex;
+ flex-direction: column;
+}
+
+#image-display li {
+  list-style: none;
+}
+
+#image-display li img {
+  width: 100%;
+}
+
+p{
+  margin: 1rem;
+}
+span{
+  font-size: 0.8rem;
+}
+
+/* validate style--------------------------------------------------------------*/
+
+input:focus:invalid {
+  background-color: rgb(245, 197, 197);
+  background-position: right top;
+  background-repeat: no-repeat;
+ }
+input:focus:valid {
+  background-color: rgb(200, 246, 200);
+  background-position: right top;
+  background-repeat: no-repeat;
+  }
+
+
+
 @media only screen and (min-width: 550px) {
   body {
     background-image: url("/phpmotors/images/site/small_check.jpg");
@@ -822,4 +910,16 @@ margin: 1em;
     section#single-vehicle>img {
       grid-row: 1/5;
     }
+
+    /* imagen admin */
+    #image-display {
+      width: 90%;
+      /* display: grid;
+      grid-template-columns: 1fr 1fr; */
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+   
 }
