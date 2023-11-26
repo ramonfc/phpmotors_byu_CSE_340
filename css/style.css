@@ -894,7 +894,7 @@ margin: 1em;
     width: 90%;
     padding: 0 3em;
   } */
-  .flex-container {
+  .grid-onecols {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2em;
@@ -903,7 +903,7 @@ margin: 1em;
     padding: 0 3em;
   }
 
-  .grid-container {
+  .grid-two-cols {
     display: grid;
     grid-template-columns: 0.5fr 2fr;
     gap: 2em;
@@ -913,22 +913,22 @@ margin: 1em;
   }
 
   /* #main_vehicle_details h1 { */
-    .grid-container h1, .flex-container h1{
+    .grid-two-cols h1, .grid-onecols h1{
     grid-column: 1 / -1;
     grid-row: 1;
   }
 
-  .grid-container  #thumbnail-display {
+  .grid-two-cols  #thumbnail-display {
     grid-column: 1;
     grid-row: 2;
   }
 
-  .grid-container #single-vehicle {
+  .grid-two-cols #single-vehicle {
     grid-column: 2;
     grid-row: 2;
   }
 
-  .flex-container #single-vehicle {
+  .grid-onecols #single-vehicle {
     grid-column: 1;
     grid-row: 2;
   }

@@ -73,8 +73,8 @@ const displayCarDetailContainer = document.querySelector("#main_vehicle_details"
 const displayThumbnailContainer = document.querySelector("#thumbnail-display");
 
 if (displayThumbnailContainer) {
-    displayCarDetailContainer.classList.remove("flex-container");
-    displayCarDetailContainer.classList.add("grid-container");
+    displayCarDetailContainer.classList.remove("grid-onecols");
+    displayCarDetailContainer.classList.add("grid-two-cols");
 } else {
-    displayCarDetailContainer.classList.add("flex-container");
+    displayCarDetailContainer.classList.add("grid-onecols");
 }
