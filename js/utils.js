@@ -68,3 +68,13 @@ if (iconLock) {
 //     });
  
 // });
+
+const displayCarDetailContainer = document.querySelector("#main_vehicle_details");
+const displayThumbnailContainer = document.querySelector("#thumbnail-display");
+
+if (displayThumbnailContainer) {
+    displayCarDetailContainer.classList.remove("flex-container");
+    displayCarDetailContainer.classList.add("grid-container");
+} else {
+    displayCarDetailContainer.classList.add("flex-container");
+}

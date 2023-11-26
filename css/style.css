@@ -595,12 +595,13 @@ padding: 0 0 1em 1em;
 
 
 /* details vehicles */
-#main_vehicle_details {
+/* #main_vehicle_details {
 display: flex;
 flex-direction: column;
 padding: 1em;
 margin: 1em;
-}
+
+} */
 
 #main_vehicle_details h1, #main_vehicle_details h2, #main_vehicle_details p {
   text-align: center;
@@ -666,31 +667,33 @@ margin: 1em;
 
 #image-display li {
   list-style: none;
+  width: 47%;
 }
+
 
 #image-display li img {
-  width: 100%;
+  width: 90%;
 }
 
-p{
-  margin: 1rem;
-}
-span{
-  font-size: 0.8rem;
+/* --- vehicle details images */
+#thumbnail-display ul{
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  align-items: flex-start;
 }
 
-/* validate style--------------------------------------------------------------*/
+#thumbnail-display h3 {
+  text-align: center;
+  border-top: 1px solid gray;
+  padding-top: 1em;
+}
 
-input:focus:invalid {
-  background-color: rgb(245, 197, 197);
-  background-position: right top;
-  background-repeat: no-repeat;
- }
-input:focus:valid {
-  background-color: rgb(200, 246, 200);
-  background-position: right top;
-  background-repeat: no-repeat;
-  }
+#thumbnail-display ul li {
+  list-style: none;
+  margin-top: 0.5em;
+}
+
 
 
 
@@ -883,11 +886,53 @@ input:focus:valid {
 		width: 100%;
 	}
 
-  #main_vehicle_details {
+  /* #main_vehicle_details {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
+    gap: 2em;
+    margin: 1em;
+    width: 90%;
+    padding: 0 3em;
+  } */
+  .flex-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2em;
     margin: 1em;
     width: 90%;
     padding: 0 3em;
   }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
+    gap: 2em;
+    margin: 1em;
+    width: 90%;
+    padding: 0 3em;
+  }
+
+  /* #main_vehicle_details h1 { */
+    .grid-container h1, .flex-container h1{
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .grid-container  #thumbnail-display {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .grid-container #single-vehicle {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .flex-container #single-vehicle {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
 
   #main_vehicle_details h1, #main_vehicle_details h2, #main_vehicle_details p {
     text-align: left;
@@ -913,13 +958,27 @@ input:focus:valid {
 
     /* imagen admin */
     #image-display {
-      width: 90%;
-      /* display: grid;
-      grid-template-columns: 1fr 1fr; */
+      width: 100%;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       gap: 1em;
     }
    
+    #image-display  li img {
+      max-width: 70%;
+     }
+
+
+    /* --- vehicle details images */     
+
+    #thumbnail-display h3 {
+      display: none;
+    }
+
+    #thumbnail-display img:hover {
+      transition: transform 0.3s ease; 
+      transform: scale(3.5); 
+    }
+
 }

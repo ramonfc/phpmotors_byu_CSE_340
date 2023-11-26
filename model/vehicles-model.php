@@ -104,7 +104,13 @@ function getInventoryByClassification($classificationId){
  */
 function getInvItemInfo($invId){
     $db = phpmotorsConnect();
-    $sql = 'SELECT * FROM inventory WHERE invId = :invId';
+    // $sql = 'SELECT * FROM inventory WHERE invId = :invId';
+    $sql = 'SELECT inv.invId, inv.invMake, inv.invModel, inv.invDescription, img.imgPath AS invImage, 
+    inv.invPrice, inv.invStock, inv.invColor, inv.classificationId 
+    FROM inventory AS inv 
+    INNER JOIN images AS img 
+    ON inv.invId = img.invId 
+    WHERE inv.invId= :invId';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
     $stmt->execute();
@@ -192,7 +198,13 @@ function deleteVehicle($invId) {
 // Get list of vehicles by classification name
 function getVehiclesByClassification($classificationName){
     $db = phpmotorsConnect();
-    $sql = 'SELECT * FROM inventory WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)';
+    $sql = 'SELECT inventory.invId, inventory.invMake, inventory.invModel, 
+    inventory.invDescription, images.imgPath AS invThumbnail, 
+    inventory.invPrice, 
+    inventory.invStock, inventory.invColor, 
+    inventory.classificationId FROM inventory INNER JOIN images ON inventory.invId = images.invId WHERE classificationId IN 
+    (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName) 
+    AND images.imgPath LIKE "%-tn%" AND images.imgPrimary = 1';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
     $stmt->execute();

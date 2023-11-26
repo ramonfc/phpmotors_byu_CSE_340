@@ -13,6 +13,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/library/connections.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/model/main-model.php';
 // Get the vehicles model for use as needed
 require_once '../model/vehicles-model.php';
+require_once '../model/uploads-model.php';
 // Get the functions library
 require_once '../library/functions.php';
 
@@ -291,13 +292,21 @@ switch ($action) {
 
 
   case 'vehicles':
-    $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
     $vehicle = getInvItemInfo($invId);
-  
+    $allThumbnails = getThumbnailInfo($invId);
+
+    // print_r($allThumbnails);
+    // exit;
+     
     if (!$vehicle) {
       $message = "<p class='message'>Sorry, no $classificationName vehicles could be found.</p>";
     } else {
       $vehicleSingleDisplay = buildSingleVehicleDisplay($vehicle);
+    }
+
+    if($vehicle && count($allThumbnails) > 0){
+      $thumbnailDisplay = buildThumbnailDisplay($vehicle, $allThumbnails);
     }
     include '../view/vehicle-detail.php';
 

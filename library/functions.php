@@ -103,7 +103,15 @@ function buildSingleVehicleDisplay($vehicle){
     return $sv;
   }
 
-
+function buildThumbnailDisplay($vehicle, $allThumbnails){
+$thd = "<section id='thumbnail-display'><h3>$vehicle[invMake] $vehicle[invModel] images</h3><ul>";
+foreach ($allThumbnails as $allThumbnail){
+    $thd .= "<li><img src='$allThumbnail[imgPath]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'></li>";
+}
+$thd .= '</ul></section>';
+return $thd;
+}
+  
 /* * ********************************
 *  Functions for working with images
 * ********************************* */

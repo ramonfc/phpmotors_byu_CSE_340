@@ -24,7 +24,7 @@
       ?>
     </nav>
 
-    <main id="main_vehicle_details">
+    <main id="main_vehicle_details" >
     <h1><?php echo $vehicle['invMake']." ".$vehicle['invModel'];?></h1>
         <?php if(isset($message)){
             echo $message;
@@ -32,7 +32,10 @@
        
          if(isset($vehicleSingleDisplay)){
             echo $vehicleSingleDisplay;
-        } 
+        }
+        if (isset($thumbnailDisplay)) {
+          echo $thumbnailDisplay;
+        }
         ?>
     </main>
 
